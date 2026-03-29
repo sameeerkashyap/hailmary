@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    name: Build & Test (macOS)
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Ninja
+        run: brew install ninja
+
+      - name: Configure (core + physics only, no Metal)
+        run: |
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DPHM_BUILD_METAL=OFF \
+            -DPHM_BUILD_WEBGPU=OFF \
+            -DPHM_BUILD_TESTS=ON \
+            -DPHM_BUILD_BENCHMARKS=ON
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Run app
+        run: ./build/bin/phm_engine
+
+      - name: Run tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Run benchmarks (quick smoke)
+        run: ./build/bin/phm_benchmarks --benchmark_min_time=0.1
+
+  # Future job: build with Metal enabled on self-hosted Apple Silicon runner
+  # build-metal:
+  #   name: Build with Metal
+  #   runs-on: [self-hosted, macos, arm64]
+  #   ...

@@ -1,0 +1,63 @@
+# Build
+build/
+out/
+cmake-build-*/
+.cmake/
+
+# macOS
+.DS_Store
+*.dSYM/
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# CLion
+.idea/
+
+# CMake generated
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+compile_commands.json
+install_manifest.txt
+
+# FetchContent cache
+_deps/
+
+# Assets (GLB files are large — store in Git LFS or download separately)
+assets/models/*.glb
+assets/models/*.gltf
+assets/textures/
+
+# metal-cpp is downloaded separately (see scripts/fetch_metal_cpp.sh)
+vendor/metal-cpp/
+
+# Compiled Metal
+*.air
+*.metallib
+*.metallibsym
+
+# Compiled WASM
+*.wasm
+*.js.mem
+*.js.symbols
+
+# Test/bench outputs
+*.json
+!vcpkg.json
+!vcpkg-configuration.json
+
+# Credentials
+.env
+*.key

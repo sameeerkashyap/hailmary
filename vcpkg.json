@@ -1,0 +1,17 @@
+{
+  "name": "phm-engine",
+  "version": "0.1.0",
+  "description": "Project Hail Mary Simulation Engine",
+  "dependencies": [
+    "eigen3",
+    {
+      "name": "imgui",
+      "features": ["docking"]
+    },
+    "gtest",
+    "benchmark",
+    "nlohmann-json",
+    "tinygltf"
+  ],
+  "builtin-baseline": "c8696863d371ab7f46e213d8f5ca923c4aef2a00"
+}

@@ -1,0 +1,32 @@
+---
+Language:        Cpp
+BasedOnStyle:    Google
+IndentWidth:     4
+ColumnLimit:     100
+AccessModifierOffset: -4
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveDeclarations: Consecutive
+AlignTrailingComments: true
+BraceWrapping:
+  AfterClass:      false
+  AfterFunction:   false
+  AfterNamespace:  false
+BreakBeforeBraces: Attach
+IncludeBlocks:   Regroup
+IncludeCategories:
+  # Metal / Apple frameworks
+  - Regex:    '^<(Metal|Foundation|QuartzCore|AppKit|MetalKit)/'
+    Priority: 3
+  # Third-party
+  - Regex:    '^<(imgui|tiny_gltf|Eigen|nlohmann)/'
+    Priority: 2
+  # C++ stdlib
+  - Regex:    '^<[a-z]'
+    Priority: 1
+  # Project headers
+  - Regex:    '^"'
+    Priority: 4
+SortIncludes: CaseSensitive
+PointerAlignment: Left
+SpaceAfterTemplateKeyword: false
+Standard:        c++20
